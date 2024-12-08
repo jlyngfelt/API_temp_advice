@@ -1,0 +1,71 @@
+main {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container {
+    background-color: var(--background);
+    width: 400px;
+    height: 650px;
+    border: 2px solid var(--frame);
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+    overflow:hidden;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.tempColor {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover; /* Får bilden att täcka hela container utan att förvrängas */
+    object-position: center;
+    position: absolute;
+    top:0;
+}
+
+h2.otherDay {
+    font-size: var(--fs-h2small);
+    margin:0;
+}
+
+h2.show {
+    opacity: 1;
+    height: 300px;
+}
+
+.current h2::after {
+    content: " GRADER";
+    font-size: 2rem;
+    margin-top:0;
+    display:block;
+}
+
+h2::after {
+    content: " GRADER";
+    font-size: 2rem;
+    margin-top:0;
+    display:inline;
+}
+
+.advice {
+    font-size: var(--fs-h4small);
+    font-style: italic;
+    font-weight: 500;
+    padding:3rem;
+}
+
+
+
+@media (min-width: 760px) {
+    main {
+        flex-direction: row;
+        justify-content: center;
+        gap:3rem;
+    }
+}

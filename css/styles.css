@@ -1,0 +1,62 @@
+:root {
+    --background: #F0FFF5;
+    --complement: #bed0c4;
+    --frame: rgb(90, 87, 87);
+
+
+    --fs-h1:10rem;
+    --fs-h2:11rem;
+    --fs-h2small: 5rem;
+    --fs-h3:2.8rem;
+    --fs-h3small:2rem;
+    --fs-h4:1.5rem;
+    --fs-h4small:1.3rem;
+    --fs-p:1rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+    font-family: Montserrat;
+}
+
+h3{
+    z-index: 2;
+    position:relative;
+    padding:1rem;
+    font-size: var(--fs-h3);
+    font-weight: 300;
+    margin: 1rem;
+    
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    z-index:2;
+    position:relative;
+    padding:1rem;
+    margin:1rem;
+    font-weight: 300;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+h4{
+    z-index:2;
+    position:relative;
+    padding:1rem;
+    font-size: var(--fs-h4);
+    font-weight: 300;
+    margin:0;
+}
+
+h5 {
+    z-index:2;
+    position:relative;
+    padding:1rem;
+}
+
