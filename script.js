@@ -18,7 +18,7 @@ const form = document.getElementById('cityForm');
 const select = document.getElementById('city');
 
 const images = [
-    '/img/cold.png',
+    'img/cold.png',
     'img/medium.png',
     'img/warm.png'
 ]
