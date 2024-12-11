@@ -53,7 +53,7 @@ form.addEventListener('submit', (event) => {
         const currentTemp = json.current.temperature_2m;
         console.log(currentTemp);
         currentContainer.textContent = currentTemp;
-        updateContent(currentContainer);
+        updateContent(currentContainer, currentTemp);
 
         imageContainer.classList.remove('none')
 
