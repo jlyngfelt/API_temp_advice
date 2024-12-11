@@ -4,6 +4,7 @@ const currentContainer = document.querySelector('.current h2');
 const advice = document.querySelector('.advice');
 const imageContainer = document.querySelector('.tempColor');
 
+// TM = tomorrow, DA = day after tomorrow
 const TM = document.querySelector('.TM');
 const DA = document.querySelector('.DA');
 
@@ -15,7 +16,6 @@ let tomorrowArray = [];
 
 const form = document.getElementById('cityForm');
 const select = document.getElementById('city');
-const imageForm = document.getElementById('ImageForm');
 
 const images = [
     '/img/cold.png',
@@ -24,8 +24,8 @@ const images = [
 ]
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Förhindra att formuläret skickas och sidan laddas om
-    const selectedCity = select.value; // Hämta det valda värdet
+    event.preventDefault(); 
+    const selectedCity = select.value; 
     
     console.log('Vald stad:', selectedCity);
     if (selectedCity == 'gbg') {
@@ -37,24 +37,23 @@ form.addEventListener('submit', (event) => {
     } else if (selectedCity == 'madrid'){
         lat = 40.416775;
         long = -3.703790
+    } else if (selectedCity == 'porto'){
+        lat = 41.14961;
+        long = -8.61099
     }
+
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`;
     
     
     fetch(url)
     .then((response) => {
-        // We take the response Promise and return it as JSON.
-        console.log(response)
         return response.json();
     })
     .then((json) => {
-        // Now we can now use the JSON as a normal object.
-        console.log(json);
-        const currentTemp = json.current.temperature_2m;
-        console.log(currentTemp);
+    const currentTemp = json.current.temperature_2m;
+
         currentContainer.textContent = currentTemp;
         updateContent(currentContainer, currentTemp);
-
         imageContainer.classList.remove('none')
 
        
@@ -76,12 +75,8 @@ form.addEventListener('submit', (event) => {
             generateBackground(TM, '#FFD9A1');
             generateBackground(DA, '#FFE9CA');
         }
-
-        // });
-
         
         const hourlyTemp = json.hourly.temperature_2m;
-        console.log(hourlyTemp);
         
         //Högsta och lägsta temp för imorgon (TM=tomorrow)
         tomorrowArray = hourlyTemp.slice(23,48);
@@ -101,42 +96,14 @@ form.addEventListener('submit', (event) => {
     });
 });
 
-   const updateContent = function(container, temp) {
-    container.textContent = temp;
-    container.classList.add('show');
-   };
+const updateContent = function(container, temp) {
+container.textContent = temp;
+container.classList.add('show');
+}
 
-   const generateBackground = function(background, hexCode) {
-    console.log(background)
-    background.style.backgroundColor = hexCode;
-   }
-   
-
-   
-   
-   
-   
-   
-    // for (i = 24; i < 48; i++) {
-    // }
-    // console.log(tomorrowArray)
-
-    // const lowestTemp = Math.min(...hourlyTemp);
-    // const highestTemp = Math.max(...hourlyTemp);
-    // console.log(lowestTemp)
-    // console.log(highestTemp)
-
-
-        // const tomorrowTemp = hourlyTemp[i];
-        // // console.log(tomorrowTemp)
-        // hourlyContainer.textContent = tomorrowTemp
-
-
-// if (hourlyTemp[0] < 0) {
-//     currentContainer.src(images[0])
-// }
-
-
+const generateBackground = function(background, hexCode) {
+background.style.backgroundColor = hexCode;
+}
 
 
 
